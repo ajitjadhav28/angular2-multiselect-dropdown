@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { allCountries } from './countries';
+import { DropdownSettings } from 'projects/angular2-multiselect-dropdown-lib/src/lib/multiselect.interface';
 
 @Component({
     templateUrl: './views/customSearch.html'
@@ -8,21 +10,20 @@ export class CustomSearchExample implements OnInit {
 
     itemList: any = [];
     selectedItems = [];
-    settings = {};
     filter = "";
-    constructor(private http: HttpClient) { }
-    ngOnInit() {
+    settings: DropdownSettings = {};
 
+    constructor(private http: HttpClient) { }
+
+    ngOnInit() {
+        this.itemList = allCountries
         this.settings = {
             text: "Select Countries",
             selectAllText: 'Select All',
             unSelectAllText: 'UnSelect All',
             classes: "myclass custom-class",
-            primaryKey: "alpha3Code",
-            labelKey: "name",
-            noDataLabel: "Search Countries...",
+            primaryKey: "countryId",
             enableSearchFilter: true,
-            searchBy: ['name', 'capital'],
             tagToBody: true,
         };
     }
@@ -40,17 +41,13 @@ export class CustomSearchExample implements OnInit {
     onDeSelectAll(items: any) {
         console.log(items);
     }
-    onSearch(evt: any) {
-        console.log(evt.target.value);
-        this.itemList = [];
-        this.http.get('https://restcountries.eu/rest/v2/name/'+evt.target.value+'?fulltext=true')
-            .subscribe(res => {
-                console.log(res);
-                this.itemList = res;
-            }, error => {
-
-            });
+    
+    mySearch(items: any[], search:string, searchBy: any[]) : any[] {
+        return items.filter(
+            item => item.itemName.toLowerCase().startsWith(search.toLowerCase())
+        )
     }
+
     onClose(){
         this.itemList = [];
         this.filter = "";
