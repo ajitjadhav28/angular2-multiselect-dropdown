@@ -1,6 +1,6 @@
 {
-  "name": "angular2-multiselect-dropdown",
-  "version": "5.0.4",
+  "name": "@ajitjadhav28/angular2-multiselect-dropdown",
+  "version": "5.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,11 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-sass":"node-sass --include-path scss projects/angular2-multiselect-dropdown-lib/themes/default.theme.scss projects/angular2-multiselect-dropdown-lib/themes/default.theme.css",
-    "build-package":"npm run build-sass && ng-packagr -p projects/angular2-multiselect-dropdown-lib/package.json",
+    "build-sass": "node-sass --include-path scss projects/angular2-multiselect-dropdown-lib/themes/default.theme.scss projects/angular2-multiselect-dropdown-lib/themes/default.theme.css",
+    "build-package": "npm run build-sass && ng-packagr -p projects/angular2-multiselect-dropdown-lib/package.json",
     "github-pages": "ng build --prod --base-href /angular2-multiselect-dropdown/"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~11.0.1",
     "@angular/common": "~11.0.1",
@@ -56,5 +56,20 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
-  }
+  },
+  "description": "[![npm version](https://img.shields.io/npm/v/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)\r [![downloads](https://img.shields.io/npm/dt/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)\r [![license](https://img.shields.io/github/license/cuppalabs/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)",
+  "main": "karma.conf.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajitjadhav28/angular2-multiselect-dropdown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajitjadhav28/angular2-multiselect-dropdown/issues"
+  },
+  "homepage": "https://github.com/ajitjadhav28/angular2-multiselect-dropdown#readme"
 }
