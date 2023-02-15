@@ -45,6 +45,12 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     @Input()
     loading: boolean;
 
+    @Input()
+    customSearch: boolean;
+
+    @Input()
+    customSearchCallback: (items: any[], searchKey: any, searchBy: any[]) => any[]
+
     @Output('onSelect')
     onSelect: EventEmitter<any> = new EventEmitter<any>();
 
@@ -933,7 +939,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onDeSelectAll.emit(this.selectedItems);
     }
     filteritems(evt: any) {
-        this.filteredList = this.filterPipe.transform(this.cachedItems, evt.target.value, this.settings.searchBy);
+        if(this.customSearch) {
+            this.filteredList = this.customSearchCallback(this.cachedItems, evt.target.value, this.settings.searchBy);
+        } else {
+            this.filteredList = this.filterPipe.transform(this.cachedItems, evt.target.value, this.settings.searchBy);
+        }
         if (this.filteredList) {
             let len = 0;
             this.filteredList.forEach((obj: any, i: any) => {
