@@ -199,6 +199,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         ).subscribe(val => {
             this.filterInfiniteList(val);
         });
+        this.customSearch = false
     }
     ngOnInit() {
         this.settings = Object.assign(this.defaultSettings, this.settings);
