@@ -7,6 +7,11 @@ Angular 2 multiselect dropdown component for web applications. Easy to integrate
 
 ![](https://cuppalabs.github.io/angular2-multiselect-dropdown/assets/img/multiselect.jpeg)
 
+> # Modifications in original library
+> ##### Added functionality so that users can define their own search logic
+> --ajitjadhav28
+> ___
+
 # Important Notice !! 
 #####  From v3.0.0 onwards, you need to include `default.theme.css` file to get the basic styling of the dropdown. Refer to `themes and theming` section below
 
@@ -281,6 +286,15 @@ The following list of settings are supported by the component. Configure the set
     Example : (onFilterSelectAll)="onFilterSelectAll($event)"
 - `onFilterDeSelectAll` - Callback event fired when the list is filtered and all filtered items are de-selected with de-select all filtered items checkbox.
     Example : (onFilterDeSelectAll)="onFilterDeSelectAll($event)"
+- `customSearchCallback` - Callback to implement your own search logic. To be able to use this callback [customSearch]="true" must be passed to multiselect component.<br/>
+    Prototype : ( items: any[], search: string, searchBy: any[] ) : any[]<br/>
+    Example : [customSearchCallback]="mySearchCallback"<br/>
+    Callback:
+    mySearchCallback(items: any[], search: string, searchBy: any[]) : any[] {
+        return items.filter(
+            item => item.itemName.toLowerCase().startsWith(search.toLowerCase())
+        )
+    }
 
 ## Run locally
 - Clone the repository or downlod the .zip,.tar files.
